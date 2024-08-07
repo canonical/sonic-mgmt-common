@@ -36,6 +36,7 @@ $(GO_MOD):
 	$(GO) mod init github.com/Azure/sonic-mgmt-common
 
 $(GO_DEPS): $(GO_MOD) $(GO_PATCHES)
+	$(GO) mod tidy
 	$(GO) mod vendor
 	patches/apply.sh vendor
 	touch  $@
